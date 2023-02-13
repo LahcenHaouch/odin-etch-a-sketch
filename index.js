@@ -8,7 +8,7 @@
     for (let i = 0; i < 16; i++) {
       const rowCellElement = document.createElement('div')
       rowCellElement.classList.add('row-cell');
-      rowCellElement.addEventListener('mouseleave', event => {
+      rowCellElement.addEventListener('mouseenter', event => {
         event.currentTarget.classList.add('active');
       });
 

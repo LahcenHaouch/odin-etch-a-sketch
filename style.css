@@ -83,6 +83,13 @@ h6 {
  Custom css
 */
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
     margin-bottom: 16px;
 }
