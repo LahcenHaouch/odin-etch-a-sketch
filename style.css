@@ -78,3 +78,25 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+/*
+ Custom css
+*/
+
+h1 {
+    margin-bottom: 16px;
+}
+
+.row {
+    display: flex;
+}
+
+.row-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.active {
+    background-color: hotpink;
+}
