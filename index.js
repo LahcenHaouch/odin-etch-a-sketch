@@ -2,8 +2,8 @@ const GRID_SIZE = {
   width: 480,
   height: 480
 };
-const INITIAL_NUMBER_OF_CELLS = 16;
-const INITIAL_COLOR = '#EE62A8';
+const INITIAL_NUMBER_OF_CELLS = 64;
+const INITIAL_COLOR = '#1E5DC2';
 
 function getNumberOfRowsAndColumns(numberOfCells) {
   return Math.sqrt(numberOfCells);
@@ -66,7 +66,7 @@ changeGridBtn.addEventListener('click', () => {
 
   const numberOfCells = Number.parseInt(promptedNumberOfCells, 10);
 
-  if (Number.isNaN(numberOfCells) || numberOfCells > 64 || numberOfCells % 2 !== 0) {
+  if (Number.isNaN(numberOfCells) || numberOfCells > 128 || numberOfCells % 2 !== 0) {
     return;
   } else {
     numberOfRowsAndColumns = getNumberOfRowsAndColumns(numberOfCells);
