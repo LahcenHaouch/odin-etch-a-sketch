@@ -1,20 +1,14 @@
 const GRID_SIZE = {
-  width: 480,
-  height: 480
+  width: 960,
 };
-const INITIAL_NUMBER_OF_CELLS = 64;
+const INITIAL_NUMBER_OF_CELLS = 16;
 const INITIAL_COLOR = '#1E5DC2';
 
-function getNumberOfRowsAndColumns(numberOfCells) {
-  return Math.sqrt(numberOfCells);
-}
 function getCellDimensions(gridWidth, numberOfRowsAndColumns) {
   return gridWidth / numberOfRowsAndColumns;
 }
 
-const INITIAL_NUMBER_OF_ROWS_AND_COLUMNS = getNumberOfRowsAndColumns(INITIAL_NUMBER_OF_CELLS);
-
-let numberOfRowsAndColumns = INITIAL_NUMBER_OF_ROWS_AND_COLUMNS;
+let numberOfRowsAndColumns = INITIAL_NUMBER_OF_CELLS;
 let currentColor = INITIAL_COLOR;
 
 function createGrid(numberOfRowsAndColumns, dimensions) {
@@ -66,10 +60,10 @@ changeGridBtn.addEventListener('click', () => {
 
   const numberOfCells = Number.parseInt(promptedNumberOfCells, 10);
 
-  if (Number.isNaN(numberOfCells) || numberOfCells > 128 || numberOfCells % 2 !== 0) {
+  if (Number.isNaN(numberOfCells) || numberOfCells > 64) {
     return;
   } else {
-    numberOfRowsAndColumns = getNumberOfRowsAndColumns(numberOfCells);
+    numberOfRowsAndColumns = numberOfCells;
     deleteGrid();
 
     const dimensions = getCellDimensions(GRID_SIZE.width, numberOfRowsAndColumns);
