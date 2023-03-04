@@ -1,6 +1,7 @@
 const GRID_SIZE = {
   width: 960,
 };
+const RAINBOW_COLORS = ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'];
 const INITIAL_NUMBER_OF_CELLS = 16;
 const INITIAL_COLOR = '#1E5DC2';
 
@@ -10,6 +11,7 @@ function getCellDimensions(gridWidth, numberOfRowsAndColumns) {
 
 let numberOfRowsAndColumns = INITIAL_NUMBER_OF_CELLS;
 let currentColor = INITIAL_COLOR;
+let useRainbowColors = false;
 
 function createGrid(numberOfRowsAndColumns, dimensions) {
   const gridElement = document.querySelector('#grid');
@@ -24,6 +26,14 @@ function createGrid(numberOfRowsAndColumns, dimensions) {
       rowCellElement.style.height = `${dimensions}px`;
       rowCellElement.addEventListener('mouseenter', event => {
         event.currentTarget.classList.add('active');
+        if (useRainbowColors) {
+          const indexOfCurrentColor = RAINBOW_COLORS.indexOf(currentColor);
+          if (indexOfCurrentColor === -1 || indexOfCurrentColor === RAINBOW_COLORS.length - 1) {
+            currentColor = RAINBOW_COLORS[0];
+          } else {
+            currentColor = RAINBOW_COLORS[indexOfCurrentColor + 1];
+          }
+        }
         event.currentTarget.style.backgroundColor = currentColor;
       })
 
@@ -77,4 +87,10 @@ colorElement.value = currentColor;
 
 colorElement.addEventListener('change', event => {
   currentColor = event.target.value;
+})
+
+// Use rainbow brush
+const rainbowInput = document.querySelector('#rainbow-brush');
+rainbowInput.addEventListener('click', event => {
+  useRainbowColors = event.currentTarget.checked;
 })
