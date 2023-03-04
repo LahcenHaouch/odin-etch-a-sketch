@@ -93,4 +93,8 @@ colorElement.addEventListener('change', event => {
 const rainbowInput = document.querySelector('#rainbow-brush');
 rainbowInput.addEventListener('click', event => {
   useRainbowColors = event.currentTarget.checked;
+
+  if (!useRainbowColors) {
+    currentColor = colorElement.value;
+  }
 })
