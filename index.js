@@ -13,6 +13,17 @@ let numberOfRowsAndColumns = INITIAL_NUMBER_OF_CELLS;
 let currentColor = INITIAL_COLOR;
 let useRainbowColors = false;
 
+function calculateDarkerColor(color) {
+  console.log({ color });
+  const parsedColor = Number.parseInt(color, 10);
+  console.log({ parsedColor })
+  const newColor = Math.round(parsedColor * (1 / 2));
+
+  console.log({ newColor });
+
+  return newColor;
+}
+
 function createGrid(numberOfRowsAndColumns, dimensions) {
   const gridElement = document.querySelector('#grid');
 
@@ -25,13 +36,28 @@ function createGrid(numberOfRowsAndColumns, dimensions) {
       rowCellElement.style.width = `${dimensions}px`;
       rowCellElement.style.height = `${dimensions}px`;
       rowCellElement.addEventListener('mouseenter', event => {
+        console.log(currentColor);
         event.currentTarget.classList.add('active');
         if (useRainbowColors) {
-          const indexOfCurrentColor = RAINBOW_COLORS.indexOf(currentColor);
-          if (indexOfCurrentColor === -1 || indexOfCurrentColor === RAINBOW_COLORS.length - 1) {
-            currentColor = RAINBOW_COLORS[0];
+          if (event.currentTarget.classList.contains('rainbow')) {
+            // Next color gets darker
+            const eventBackgroundColor = event.currentTarget.style.backgroundColor;
+
+            const [red, green, blue] = eventBackgroundColor.substring(4, eventBackgroundColor.length - 1).split(', ');
+
+            currentColor = `rgb(${calculateDarkerColor(red)}, ${calculateDarkerColor(green)}, ${calculateDarkerColor(blue)})`;
           } else {
-            currentColor = RAINBOW_COLORS[indexOfCurrentColor + 1];
+            event.currentTarget.classList.add('rainbow');
+            const indexOfCurrentColor = RAINBOW_COLORS.indexOf(currentColor);
+            if (indexOfCurrentColor === -1 || indexOfCurrentColor === RAINBOW_COLORS.length - 1) {
+              currentColor = RAINBOW_COLORS[0];
+            } else {
+              currentColor = RAINBOW_COLORS[indexOfCurrentColor + 1];
+            }
+          }
+        } else {
+          if (event.currentTarget.classList.contains('rainbow')) {
+            event.currentTarget.classList.remove('rainbow');
           }
         }
         event.currentTarget.style.backgroundColor = currentColor;
