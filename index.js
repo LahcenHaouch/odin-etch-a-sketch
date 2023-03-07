@@ -14,14 +14,8 @@ let currentColor = INITIAL_COLOR;
 let useRainbowColors = false;
 
 function calculateDarkerColor(color) {
-  console.log({ color });
   const parsedColor = Number.parseInt(color, 10);
-  console.log({ parsedColor })
-  const newColor = Math.round(parsedColor * (1 / 2));
-
-  console.log({ newColor });
-
-  return newColor;
+  return Math.round(parsedColor * (1 / 2));
 }
 
 function createGrid(numberOfRowsAndColumns, dimensions) {
@@ -36,7 +30,6 @@ function createGrid(numberOfRowsAndColumns, dimensions) {
       rowCellElement.style.width = `${dimensions}px`;
       rowCellElement.style.height = `${dimensions}px`;
       rowCellElement.addEventListener('mouseenter', event => {
-        console.log(currentColor);
         event.currentTarget.classList.add('active');
         if (useRainbowColors) {
           if (event.currentTarget.classList.contains('rainbow')) {
