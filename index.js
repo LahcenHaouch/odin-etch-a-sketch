@@ -1,7 +1,7 @@
 const GRID_SIZE = {
   width: 960,
 };
-const RAINBOW_COLORS = ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'];
+const RAINBOW_COLORS = ['rgb(148, 0, 211)', 'rgb(75, 0, 130)', 'rgb(0, 0, 255)', 'rgb(0, 255, 0)', 'rgb(255, 255, 0)', 'rgb(255, 127, 0)', 'rgb(255, 0 , 0)'];
 const INITIAL_NUMBER_OF_CELLS = 16;
 const INITIAL_COLOR = '#1E5DC2';
 
