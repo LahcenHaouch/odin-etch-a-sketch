@@ -74,6 +74,7 @@ const clearBtn = document.querySelector('#clear');
 clearBtn.addEventListener('click', () => {
   document.querySelectorAll('.active').forEach(row => {
     row.classList.remove('active');
+    row.classList.remove('rainbow');
     row.style.backgroundColor = 'white';
   });
 })
